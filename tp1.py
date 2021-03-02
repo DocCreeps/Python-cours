@@ -1,74 +1,59 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Mar  1 14:47:44 2021
-
-@author: dorian
+@author: Dorian
 """
-from math import sin
-from math import cos
-
-
+import math
+"""
+#function qui calcul le X pour le sin
 def sinus(x,X):
  X=X + (x - ((x^3)/3))
  return X
-
+#function qui calcul le X pour le cos
 def cosinus(x,X):
  X =  X +(1-((x^2)/2))
  return X
-
-
 """
-def pif(n,cp, pis):
- if n%2 != 0 :
-    if cp==0:
-      cp+=1
-      pis = pis - 1/n
-      
-    elif cp== 1 :
-      cp=0
-      pis = pis + 1/n
-    
- return pis
-"""
+n = math.radians(float(input('entrez une valeur pour l\'angle n : \n ')))
+SinX, CosX, pi4, pi= 0,0,0,0
 
- 
-#sin x= sigma((-1)^n * X^(2n +1)) / (2n+1)
 
-n = float(input('entrez une valeur pour n : \n '))
-
-i = 1
-N = i
-SinX = 0
-CosX = 0
-
-pi =0
-c=1
-while i <= (n):
-   N= N*i 
    #sin x= x-((x^3)/3 )+ ...
-   SinX=sinus(i,SinX)
-   CosX=cosinus(i, CosX)
-   
+#SinX= sinus(n,SinX)
+   #cos 1 – ((x^2)/2!) + ...
+#CosX= cosinus(n,CosX)   
+
+c,t=1,1
+
+
+for i in range(5000):   
+   #p/4 = pi + 1/i
    if i%2 != 0 :
     if c==0:
-      pi = pi - 1/i
+      pi4 = pi4 - 1/i
       c+=1
     elif c== 1 :
-      pi = pi + 1/i
-      c=0
-   
+      pi4 = pi4 + 1/i
+      c=0 
    
    i += 1
-A=(sin(SinX)*sin(SinX))+(cos(CosX)*cos(CosX))    
-print("N= ",N)
-print("sin ",SinX,"=", sin(SinX))
-print("cos ",CosX, "=", cos(CosX))
+   
+#pi =4* sigma (((-1)^i)/(2*i+1))
+   
+for o in range(50000):
+    pi += ((-1)**o / (2*o + 1)) * 4  
+   #1= (sin(x)^2)+ (cos(x)^2)
+A=(math.sin(SinX)**2)+(math.cos(CosX)**2)
+
+#affichage des résultats    
+
+print("sin ",SinX)
+print("cos ",CosX)
 print("1= ",A)
-print("pi/4 =", pi)
+print("pi/4 =", pi4)
+print("pi = ", pi)
+#sin x= sigma((-1)^n * X^(2n +1)) / (2n+1)
 
-
-#pi =4* (((-1)^i)/(2*i+1))
-#p/4 = pi + 1/i 
 
 
 

@@ -2,7 +2,7 @@
 """
 Created on Mon Mar  1 12:35:44 2021
 
-@author: dorian
+@author: Dorian
 """
 from math import sqrt
 
