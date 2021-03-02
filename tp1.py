@@ -16,20 +16,21 @@ def sinus(i,SinX):
 def cosinus(i,CosX):
  cosx = i-((i^2)/2)  
  CosX = cosx + CosX
- return CosX
+ 
 
 def un(i,A):
-  a = (sin(i)*sin(i))+(cos(i)*cos(i))
-  A =a + A 
-  return A
+  a = A + (sin(i)*sin(i))+(cos(i)*cos(i))
+  
+  
 
-def pi(i)
+def pi(i):
  if i%2 != 0 :
     pi = pi + 1/i
- return pi
 """ 
+
  
 #sin x= sigma((-1)^n * X^(2n +1)) / (2n+1)
+
 n = float(input('entrez une valeur pour n : \n '))
 
 i = 1
@@ -41,17 +42,13 @@ pi =0
 while i <= (n):
    N= N*i 
    #sin x= x-((x^3)/3 )+ ...
-   sinx= i - ((i^3)/3)
+   SinX=SinX + (i - ((i^3)/3))
    #cos x= 1-((x^2)/2 )+ ...
-   cosx = 1-((i^2)/2)
+   CosX =  CosX +(1-((i^2)/2))
    
    #1= (sin (x)^2)+(cos(x)^2)+...
-   a = (sin(i)*sin(i))+(cos(i)*cos(i))
-   
-   SinX = sinx + SinX
-   CosX = cosx + CosX
-   A =a + A 
-   
+   A = A + (sin(i)*sin(i))+(cos(i)*cos(i))
+
    # pi = 1-(1/3)+(1/5)-(1/7)+(1/9)-....
 
    if i%2 != 0 :
