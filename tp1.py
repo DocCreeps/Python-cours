@@ -9,17 +9,14 @@ from math import cos
 
 """
 def sinus(i,SinX):
- sinx= i - ((i^3)/3)
- SinX = sinx + SinX
- return SinX
+ SinX=SinX + (i - ((i^3)/3))
 
 def cosinus(i,CosX):
- cosx = i-((i^2)/2)  
- CosX = cosx + CosX
+ CosX =  CosX +(1-((i^2)/2))
  
 
 def un(i,A):
-  a = A + (sin(i)*sin(i))+(cos(i)*cos(i))
+ a = A + (sin(i)*sin(i))+(cos(i)*cos(i))
   
   
 
@@ -38,7 +35,8 @@ N = i
 SinX = 0
 CosX = 0
 A = 0
-pi =0 
+pi =0
+c=1
 while i <= (n):
    N= N*i 
    #sin x= x-((x^3)/3 )+ ...
@@ -50,16 +48,21 @@ while i <= (n):
    A = A + (sin(i)*sin(i))+(cos(i)*cos(i))
 
    # pi = 1-(1/3)+(1/5)-(1/7)+(1/9)-....
-
    if i%2 != 0 :
-    pi = pi + 1/i
+    if c==0:
+      pi = pi - 1/i
+      c+=1
+    elif c== 1 :
+      pi = pi + 1/i
+      c=0
    
    i += 1
+   
 print("N= ",N)
-print("sin x =", sin(SinX))
-print("cos x = ", cos(CosX))
+print("x= ", SinX, " sin x =", sin(SinX))
+print("x = ",CosX, "cos x = ", cos(CosX))
 print("1= ",A)
-print("pi =", pi)
+print("pi/4 =", pi)
 
 #pi =4* (((-1)^i)/(2*i+1))
 #p/4 = pi + 1/i 
