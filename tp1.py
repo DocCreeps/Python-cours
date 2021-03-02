@@ -7,23 +7,29 @@ Created on Mon Mar  1 14:47:44 2021
 from math import sin
 from math import cos
 
+
+def sinus(x,X):
+ X=X + (x - ((x^3)/3))
+ return X
+
+def cosinus(x,X):
+ X =  X +(1-((x^2)/2))
+ return X
+
+
 """
-def sinus(i,SinX):
- SinX=SinX + (i - ((i^3)/3))
-
-def cosinus(i,CosX):
- CosX =  CosX +(1-((i^2)/2))
- 
-
-def un(i,A):
- a = A + (sin(i)*sin(i))+(cos(i)*cos(i))
-  
-  
-
-def pi(i):
- if i%2 != 0 :
-    pi = pi + 1/i
-""" 
+def pif(n,cp, pis):
+ if n%2 != 0 :
+    if cp==0:
+      cp+=1
+      pis = pis - 1/n
+      
+    elif cp== 1 :
+      cp=0
+      pis = pis + 1/n
+    
+ return pis
+"""
 
  
 #sin x= sigma((-1)^n * X^(2n +1)) / (2n+1)
@@ -34,20 +40,15 @@ i = 1
 N = i
 SinX = 0
 CosX = 0
-A = 0
+
 pi =0
 c=1
 while i <= (n):
    N= N*i 
    #sin x= x-((x^3)/3 )+ ...
-   SinX=SinX + (i - ((i^3)/3))
-   #cos x= 1-((x^2)/2 )+ ...
-   CosX =  CosX +(1-((i^2)/2))
+   SinX=sinus(i,SinX)
+   CosX=cosinus(i, CosX)
    
-   #1= (sin (x)^2)+(cos(x)^2)+...
-   A = A + (sin(i)*sin(i))+(cos(i)*cos(i))
-
-   # pi = 1-(1/3)+(1/5)-(1/7)+(1/9)-....
    if i%2 != 0 :
     if c==0:
       pi = pi - 1/i
@@ -56,13 +57,15 @@ while i <= (n):
       pi = pi + 1/i
       c=0
    
-   i += 1
    
+   i += 1
+A=(sin(SinX)*sin(SinX))+(cos(CosX)*cos(CosX))    
 print("N= ",N)
-print("x= ", SinX, " sin x =", sin(SinX))
-print("x = ",CosX, "cos x = ", cos(CosX))
+print("sin ",SinX,"=", sin(SinX))
+print("cos ",CosX, "=", cos(CosX))
 print("1= ",A)
 print("pi/4 =", pi)
+
 
 #pi =4* (((-1)^i)/(2*i+1))
 #p/4 = pi + 1/i 
