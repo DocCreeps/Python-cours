@@ -7,10 +7,9 @@ Created on Wed Mar  3 17:08:18 2021
 from random import shuffle, randint
 import matplotlib.pyplot as plt
 
+#retourne les cases adjacente [y][x]
 
-def voisinage(x,y, largeur, hauteur) :
-	
-	#retourne les voisins de la case [y][x]
+def adja(x,y, largeur, hauteur) :
 	
 	voisins = []
 	for (xx,yy) in [(x - 1, y), (x, y + 1), (x + 1, y), (x, y - 1)] :
@@ -19,43 +18,48 @@ def voisinage(x,y, largeur, hauteur) :
 	shuffle(voisins)
 	return voisins
 
-def cree_dedale(largeur, hauteur):
-
+#générations du laby
+def generate(largeur, hauteur):
 	# aucune cellule n'est visitée (donc elles sont toutes mises à False) :
 	vu = [[False] * largeur   for _ in range(hauteur)]
 
-	vertical = [["|  "] * largeur + ['|'] for _ in range( hauteur)]
-	horizontal = [["+--"] * largeur + ['+'] for _ in range( hauteur + 1)]
+	verti = [["|  "] * largeur + ['|'] for _ in range( hauteur)]
+	hori = [["+--"] * largeur + ['+'] for _ in range( hauteur + 1)]
     
-	def on_visite(x, y):
+	def visit(x, y):
 		# on marque la cellule actuelle comme étant visitée :
 		vu[y][x] = True
 
-		# pour chaque voisine  de la cellule actuelle :
-		for (xx, yy) in voisinage(x,y, largeur, hauteur) :
-			# si elle est visitée, on ne fait rien :
+		# pour chaque case adjacente  de la cellule actuelle :
+		for (xx, yy) in adja(x,y, largeur, hauteur) :
+			# si deja connecter, on ne fait rien :
 			if vu[yy][xx]: continue
 			# sinon on fait tomber le mur séparateur :
-			if xx == x: horizontal[max(y, yy)][x] = "+  "
-			if yy == y: vertical[y][max(x, xx)] = "   "
-			# et on repart de cette nouvelle cellule :
-			on_visite(xx, yy)
-
-	# on part d'une cellule au hasard :
-	on_visite( randint(0,largeur-1) , randint(0,hauteur-1) )
-
+			if xx == x: hori[max(y, yy)][x] = "+  "
+			if yy == y: verti[y][max(x, xx)] = "   "
+			# et on continue avec cette cellule:
+			visit(xx, yy)    
+	# définie une entrée et une sortie:
+	visit( randint(0,largeur-1) , randint(0,hauteur-1) )
+    
+    
 	# on dessine la grille :
 	for i in range(hauteur) :
-		print(*horizontal[i])
-		print(*vertical[i])
-	print(*horizontal[hauteur])
+        
+		print(*hori[i])
+		print(*verti[i])
+        
+	print(*hori[hauteur])
+   
+     
+    
+Largeur = int(input("Largeur du labyrinthe:  "))  
+Hauteur = int(input("Hauteur du labyrinthe:  ")) 
 
-x = int(input("Largeur du labyrinthe:  "))  
-y = int(input("Hauteur du labyrinthe:  ")) 
+laby = generate(Largeur,Hauteur)
+print(laby)
 
-laby = cree_dedale(x,y)
-plt.plot(x,y, 'r' )
-plt.show()
+
 
 
 

@@ -17,7 +17,7 @@ West = 3
 direction = 3
 
 def generate(x,y):
-    lab= [['-' for i in range(x)]for h in range(y)]
+    lab= [[random(0,1) for i in range(x)]for h in range(y)]
     
     return lab
 
