@@ -75,6 +75,7 @@ class Labyrinthe:
         plt.axis([-1, self.p+1, -1, self.q+1])
         plt.show()
         
+   #fonction pour afficher la solution     
     def solution(self):
         sol = explorer(self) 
         X, Y = [], []
@@ -85,7 +86,7 @@ class Labyrinthe:
         Y.append(.5)
         plt.plot(X, Y, 'r', linewidth=2) 
         self.show()
-
+#fonction de création du laby
 def creation(p, q):
     laby = Labyrinthe(p, q)
     pile = Pile()
@@ -130,10 +131,11 @@ def creation(p, q):
     return laby
 
 
-
+#demande a l'utilisateur de rentrez la hauteur et la largeur
 La = int(input("Largeur du labyrinthe:  "))  
 Ha = int(input("Hauteur du labyrinthe:  ")) 
 
-
+#créée le laby
 laby = creation(La,Ha ) 
+#affiche la solution séléctionner 
 laby.solution()
