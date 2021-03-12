@@ -4,8 +4,12 @@ Created on Thu Mar  4 14:56:35 2021
 
 @author: doria
 """
+#import de la fonction randint de la librairie random
 from numpy.random import randint
+#import de la librairie matpolib
 import matplotlib.pyplot as plt
+
+#création d'une classe pile qui va servir a créée le chemin A verif
 class Pile:
     def __init__(self):
         self.lst = [] 
@@ -21,6 +25,7 @@ class Pile:
             raise ValueError("pile vide") 
         return self.lst.pop()
     
+#fonction qui va parcourire le laby    
 def explorer(laby): 
     pile = Pile()
     pile.push((0, laby.q - 1)) 
@@ -46,8 +51,10 @@ def explorer(laby):
             pile.push((i-1, j))
             laby.tab[i-1][j].etat = False
     return pile.lst
-    
+ 
+   #class qui va définire les case du laby en initilisant les mur dans toute les direction et son etas a false
 class Case:
+    #fonction qui va permetre l'initialisation des case du laby elle prend en paramétres l'appel a l'instance de la classe
     def __init__(self):
         self.N = False 
         self.W = False 
@@ -55,12 +62,14 @@ class Case:
         self.E = False 
         self.etat = False
 
+  # class qui permet la définition d'un objet labyrinthe
 class Labyrinthe:
+    #fonction qui permet l'intialisation du laby qui prend en parametre l'appel a l'instance de la classe(self) une valeur p et une valeur q
     def __init__(self, p, q):
         self.p = p
         self.q = q
         self.tab = [[Case() for j in range(q)] for i in range(p)]
-    
+    #fonction qui permet d'afficher le laby qui prend en parametre l'appel a l'instance de la classe (self)
     def show(self):
         plt.plot([0, 0, self.p, self.p, 0], [0, self.q, self.q, 0, 0], linewidth=2) 
         for i in range(self.p-1):
