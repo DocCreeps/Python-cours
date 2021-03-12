@@ -11,15 +11,16 @@ import matplotlib.pyplot as plt
 
 #création d'une classe pile qui va servir a créée le chemin A verif
 class Pile:
+    #fonction qui permet 
     def __init__(self):
         self.lst = [] 
-    
+     #fonction qui permet 
     def empty(self):
         return self.lst == [] 
-    
+     #fonction qui permet 
     def push(self, x):
         self.lst.append(x)
-
+ #fonction qui permet 
     def pop(self):
         if self.empty():
             raise ValueError("pile vide") 
