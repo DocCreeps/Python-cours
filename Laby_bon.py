@@ -26,7 +26,7 @@ class Pile:
             raise ValueError("pile vide") 
         return self.lst.pop()
     
-#fonction qui va parcourire le laby    
+#fonction qui va parcourire le laby et crée un chemin 
 def explorer(laby): 
     pile = Pile()
     pile.push((0, laby.q - 1)) 
