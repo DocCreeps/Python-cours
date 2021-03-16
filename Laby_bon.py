@@ -11,16 +11,16 @@ import matplotlib.pyplot as plt
 
 #création d'une classe pile qui va servir a créée le chemin A verif
 class Pile:
-    #fonction qui permet 
+    #fonction qui permet initialisée une liste
     def __init__(self):
         self.lst = [] 
-     #fonction qui permet 
+     #fonction qui permet  de remplire la liste
     def empty(self):
         return self.lst == [] 
      #fonction qui permet 
     def push(self, x):
         self.lst.append(x)
- #fonction qui permet 
+ #fonction qui permet d'afficher un message en cas d'erreur
     def pop(self):
         if self.empty():
             raise ValueError("pile vide") 
@@ -53,7 +53,7 @@ def explorer(laby):
             laby.tab[i-1][j].etat = False
     return pile.lst
  
-   #class qui va définire les case du laby en initilisant les mur dans toute les direction et son etas a false
+   #class qui va définire les case du laby en initilisant les mur dans toute les directions et son etas a false
 class Case:
     #fonction qui va permetre l'initialisation des case du laby elle prend en paramétres l'appel a l'instance de la classe
     def __init__(self):
